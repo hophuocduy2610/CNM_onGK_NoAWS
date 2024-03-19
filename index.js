@@ -59,7 +59,8 @@ var cars = [
 ]
 
 app.get('/' , (req , res)=>{
-   return res.render('index', {cars})
+   return res.render('index', {cars, numberWithCommas : function (x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');}})
 })
 
 app.post('/save', upload.single("hinhXe") , (req , res)=>{

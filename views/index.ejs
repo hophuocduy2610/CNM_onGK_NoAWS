@@ -52,7 +52,7 @@
                     <td><%= cars[i].maXe %></td>
                     <td><%= cars[i].tenXe %></td>
                     <td><%= cars[i].loaiXe %></td>
-                    <td><%= cars[i].gia %></td>
+                    <td><%= numberWithCommas(cars[i].gia) %></td>
                     <td><img src="<%= cars[i].hinhXe %>" alt="avt_<%= cars[i].maXe %>" width="50" height="50"></td>
                     <td><input type="checkbox" name="<%= cars[i].maXe %>" id="<%= cars[i].maXe %>"></td>
                 </tr>
