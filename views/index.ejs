@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="row justify-content-center">
+        <form action="/save" method="post" enctype="multipart/form-data">
+            <h3 class="font-weight-bold">Thêm dòng xe mới</h3>
+            <input type="text" class="mb-3" name="maXe" id="maXe" placeholder="Nhập mã xe">
+            <br>
+            <input type="text" class="mb-3" name="tenXe" id="tenXe" placeholder="Nhập tên xe">
+            <br>
+            <select name="loaiXe" class="mb-3" id="loaiXe">
+                <option value="Xe hơi">Xe hơi</option>
+                <option value="Siêu xe">Siêu xe</option>
+                <option value="Xe 4 bánh">Xe 4 bánh</option>
+            </select>
+            <br>
+            <input type="number" class="mb-3" name="gia" id="gia">
+            <br>
+            <input type="file" class="mb-3" name="hinhXe" id="hinhXe" accept="image/*">
+            <br>
+            <input type="submit" class="mb-3 btn btn-primary" value="Thêm">
+        </form>
+    </div>
+
+    <div class="row justify-content-center">
+        <form action="/xoa" method="post" enctype="multipart/form-data">
+            <h3 class="font-weight-bold">Xóa xe theo mã</h3>
+            <input type="text" class="mb-3" name="maXe" id="maXe">
+            <br>
+            <input type="submit" class="mb-3 btn btn-danger" value="Xóa">
+        </form>
+    </div>
+
+    <form action="/delete" method="post" enctype="multipart/form-data">
+        <table class="table table-border">
+            <tr>
+                <th>Mã xe</th>
+                <th>Tên xe</th>
+                <th>Loại xe</th>
+                <th>Giá</th>
+                <th>Hình xe</th>
+                <th>Xóa</th>
+            </tr>
+            <% for( let i = 0; i < cars.length; i++ ) { %>
+                <tr>
+                    <td><%= cars[i].maXe %></td>
+                    <td><%= cars[i].tenXe %></td>
+                    <td><%= cars[i].loaiXe %></td>
+                    <td><%= cars[i].gia %></td>
+                    <td><img src="<%= cars[i].hinhXe %>" alt="avt_<%= cars[i].maXe %>" width="50" height="50"></td>
+                    <td><input type="checkbox" name="<%= cars[i].maXe %>" id="<%= cars[i].maXe %>"></td>
+                </tr>
+                <% } %>
+        </table>
+        <input type="submit" class="btn btn-danger" value="Xóa">
+    </form>
+</body>
+</html>
